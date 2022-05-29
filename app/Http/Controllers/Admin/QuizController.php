@@ -15,7 +15,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::paginate();
+        $quizzes = Quiz::paginate(10);
         return view('admin/quiz/list',compact('quizzes'));
     }
 
@@ -26,7 +26,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        return "merhaba ekleme sayfası";
+        return view('admin/quiz/create');
     }
 
     /**
@@ -37,7 +37,7 @@ class QuizController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->post();
     }
 
     /**
