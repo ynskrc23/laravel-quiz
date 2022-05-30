@@ -9,22 +9,22 @@
                 @csrf
                 <div class="form-group mb-3">
                     <label for="title">Başlık</label>
-                    <input type="text" name="title" class="form-control" required>
+                    <input type="text" name="title" class="form-control" value="{{ old('title') }}">
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="description">Açıklama</label>
-                   <textarea name="description" class="form-control" rows="5"></textarea>
+                   <textarea name="description" class="form-control" rows="5">{{ old('description') }}</textarea>
                 </div>
 
                 <div class="form-group mb-3">
-                    <input id="isFinished" type="checkbox">
+                    <input id="isFinished" @if(old('finished_at')) checked @endif type="checkbox">
                     <label for="isFinished">Bitiş Tarihi Olacak mı?</label>
                 </div>
 
-                <div class="form-group mb-3" style="display:none;" id="isFinishedInput">
+                <div class="form-group mb-3" @if(!old('finished_at')) style="display:none;" @endif id="isFinishedInput">
                     <label>Bitiş Tarihi</label>
-                    <input type="datetime-local" name="finished_at" class="form-control">
+                    <input type="datetime-local" name="finished_at" value="{{ old('finished_at') }}" class="form-control">
                 </div>
 
                 <div class="form-group">
