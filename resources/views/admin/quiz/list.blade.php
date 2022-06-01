@@ -24,7 +24,7 @@
                    <td>{{ $val->status }}</td>
                    <td>{{ $val->finished_at }}</td>
                    <td>
-                       <a href="" class="btn btn-sm btn-primary">Düzenle</a>
+                       <a href="{{ route('quizzes.edit',$val->id) }}" class="btn btn-sm btn-primary">Düzenle</a>
                        <a href="" class="btn btn-sm btn-danger">Sil</a>
                    </td>
                </tr>
