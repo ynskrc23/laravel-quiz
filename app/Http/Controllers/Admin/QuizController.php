@@ -51,7 +51,7 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        //
+        return "1";
     }
 
     /**
@@ -89,6 +89,9 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $quiz = Quiz::find($id) ?? abort(404,"Quiz bulunamadı");
+        $quiz->delete();
+
+        return redirect()->route('quizzes.index')->withSuccess('Quiz silme işlemi başarılı bir şekilde yapıldı');
     }
 }
