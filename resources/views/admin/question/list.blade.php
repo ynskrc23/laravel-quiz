@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">
-                <a href="" class="btn btn-sm btn-primary">Question Ekle</a>
+                <a href="{{route('questions.create',$quiz->id)}}" class="btn btn-sm btn-primary">Question Ekle</a>
             </h5>
             <table class="table">
                 <thead class="thead-light">
