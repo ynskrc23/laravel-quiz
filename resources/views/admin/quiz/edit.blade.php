@@ -23,6 +23,15 @@
                 </div>
 
                 <div class="form-group mb-3">
+                    <label for="status">Durum</label>
+                    <select name="status" class="form-control">
+                        <option @if($quiz->questions_count < 8) disabled @endif @if($quiz->status == 'published') selected @endif value="publish">Aktif</option>
+                        <option @if($quiz->status == 'passive') selected @endif value="passive">Pasif</option>
+                        <option @if($quiz->status == 'draft') selected @endif value="draft">Taslak</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
                     <input id="isFinished" @if( $quiz->finished_at) checked @endif type="checkbox">
                     <label for="isFinished">Bitiş Tarihi Olacak mı?</label>
                 </div>

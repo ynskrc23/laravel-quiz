@@ -39,7 +39,7 @@
                         <td>{{ substr($val->correct_answer,-1) }} Cevap</td>
                         <td>
                             <a href="{{ route('questions.edit',[$quiz->id,$val->id]) }}" class="btn btn-sm btn-primary">Düzenle</a>
-                            <a href="" class="btn btn-sm btn-danger">Sil</a>
+                            <a href="{{ route('questions.destroy',[$quiz->id,$val->id]) }}" class="btn btn-sm btn-danger">Sil</a>
                         </td>
                     </tr>
                 @endforeach
