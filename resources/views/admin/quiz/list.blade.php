@@ -5,9 +5,29 @@
 
    <div class="card">
        <div class="card-body">
-           <h5 class="card-title">
+           <h5 class="card-title float-end">
                <a href="{{ route("quizzes.create") }}" class="btn btn-sm btn-primary">Quiz Ekle</a>
            </h5>
+           <form method="get" action="">
+               <div class="form-group row">
+                   <div class="col-md-2">
+                       <input type="text" name="title" value="{{ request()->get('title') }}" placeholder="Quiz adı" class="form-control">
+                   </div>
+                   <div class="col-md-2">
+                       <select name="status" class="form-control" onchange="this.form.submit();">
+                           <option value="">Durum seçiniz</option>
+                           <option @if(request()->get('status') == "publish") selected @endif value="publish">aktif</option>
+                           <option @if(request()->get('status') == "passive") selected @endif value="passive">pasif</option>
+                           <option @if(request()->get('status') == "draft") selected @endif value="draft">taslak</option>
+                       </select>
+                   </div>
+                   @if(request()->get('title') || request()->get('status'))
+                   <div class="col-md-2">
+                       <a href="{{ route('quizzes.index') }}" class="btn btn-secondary">Sıfırla</a>
+                   </div>
+                   @endif
+               </div>
+           </form>
            <table class="table">
                <thead class="thead-light">
                <tr>
@@ -50,7 +70,7 @@
                @endforeach
                </tbody>
            </table>
-           {{ $quizzes->links() }}
+           {{ $quizzes->withQueryString()->links() }}
        </div>
    </div>
 
