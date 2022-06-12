@@ -43,7 +43,7 @@
                 <p class="card-text">
                     {{ $quiz->description }}
                 </p>
-                <a href="#" class="btn btn-primary btn-block btn-sm">
+                <a href="{{ route('quiz.join',$quiz->slug) }}" class="btn btn-primary btn-block btn-sm">
                    Quize katıl
                 </a>
             </div>
