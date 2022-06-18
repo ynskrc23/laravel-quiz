@@ -12,15 +12,21 @@
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">Puan</div>
                             </div>
-                            <span class="badge bg-primary rounded-pill">{{$quiz->my_result->point}}</span>
+                            <span class="badge bg-primary rounded-pill">
+                                {{ $quiz->my_result->point }}
+                            </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">Doğru / Yanlış Sayısı</div>
                             </div>
                             <div class="float-right">
-                                <span class="badge bg-success rounded-pill">{{$quiz->my_result->correct}} Doğru</span>
-                                <span class="badge bg-danger rounded-pill">{{$quiz->my_result->wrong}} Yanlış</span>
+                                <span class="badge bg-success rounded-pill">
+                                    {{ $quiz->my_result->correct }} Doğru
+                                </span>
+                                <span class="badge bg-danger rounded-pill">
+                                    {{ $quiz->my_result->wrong }} Yanlış
+                                </span>
                             </div>
 
                         </li>
@@ -30,30 +36,52 @@
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">Son Katılım Tarihi</div>
                             </div>
-                            <span title="{{ $quiz->finished_at }}" class="badge bg-secondary rounded-pill">{{$quiz->finished_at->diffForHumans()}}</span>
+                            <span title="{{ $quiz->finished_at }}" class="badge bg-secondary rounded-pill">
+                                {{ $quiz->finished_at->diffForHumans() }}
+                            </span>
                         </li>
                     @endif
                     <li class="list-group-item d-flex justify-content-between align-items-start">
                         <div class="ms-2 me-auto">
                             <div class="fw-bold">Soru Sayısı</div>
                         </div>
-                        <span class="badge bg-info rounded-pill">{{$quiz->questions_count}}</span>
+                        <span class="badge bg-info rounded-pill">
+                            {{ $quiz->questions_count }}
+                        </span>
                     </li>
                     @if($quiz->details)
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">Katılımcı Sayısı</div>
                             </div>
-                            <span class="badge bg-warning rounded-pill">{{$quiz->details['join_count']}}</span>
+                            <span class="badge bg-warning rounded-pill">
+                                {{ $quiz->details['join_count'] }}
+                            </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
                                 <div class="fw-bold">Ortalama Puan</div>
                             </div>
-                            <b>{{$quiz->details['average']}}</b>
+                            <b>{{ $quiz->details['average'] }}</b>
                         </li>
                     @endif
                 </ol>
+
+                @if(count($quiz->topTen) > 0)
+                    <h5 class="card-title mt-4">İlk 10 Listesi</h5>
+                    <ol class="list-group list-group-numbered">
+                        @foreach($quiz->topTen as $result)
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto fw-bold">
+                                    {{ $result->user->name }}
+                                </div>
+                                <span class="badge bg-success rounded-pill">
+                                    {{ $result->point }}
+                                </span>
+                            </li>
+                        @endforeach
+                    </ol>
+                @endif
             </div>
 
             <div class="col-md-8">
