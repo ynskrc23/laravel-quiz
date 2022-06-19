@@ -7,6 +7,16 @@
         <div class="card-body row">
             <div class="col-md-4">
                 <ol class="list-group list-group-numbered">
+                    @if($quiz->my_rank)
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold">Sıralama</div>
+                        </div>
+                        <span class="badge bg-success rounded-pill">
+                                {{ $quiz->my_rank }}
+                            </span>
+                    </li>
+                    @endif
                     @if($quiz->my_result)
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
