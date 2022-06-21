@@ -6,6 +6,7 @@
     <div class="card">
         <div class="card-body">
             <p class="card-text">
+                <h4>Puanınız: {{ $quiz->my_result->point }}</h4>
                 <div class="alert bg-light">
                     <i class="fa-solid fa-circle"></i> İşaretlediğin Cevap <br>
                     <i class="fa fa-check text-success"></i> Doğru Cevap <br>
@@ -22,6 +23,9 @@
                     @if($question->image)
                         <img src="{{asset($question->image)}}" style="width:50%" class="img-responsive">
                     @endif
+                    <br>
+                        <small>Bu soruya % <strong>{{ $question->true_percent }}</strong> oranında doğru cevap verildi. </small>
+
                     <div class="form-check mt-3">
                         @if('answer1' == $question->correct_answer)
                             <i class="fa fa-check text-success"></i>
