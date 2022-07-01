@@ -105,10 +105,10 @@
                 <a href="{{ route('quiz.join',$quiz->slug) }}" class="btn btn-warning btn-block btn-sm">
                    Quize görüntüle
                 </a>
-                @else
-                    <a href="{{ route('quiz.join',$quiz->slug) }}" class="btn btn-primary btn-block btn-sm">
-                        Quize katıl
-                    </a>
+                @elseif($quiz->finished_at > now())
+                <a href="{{ route('quiz.join',$quiz->slug) }}" class="btn btn-primary btn-block btn-sm">
+                    Quize katıl
+                </a>
                 @endif
             </div>
         </div>
